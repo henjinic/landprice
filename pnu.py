@@ -1,5 +1,6 @@
 from collections import defaultdict
 from itertools import chain
+from typing import List
 
 import pandas as pd
 
@@ -9,7 +10,7 @@ _dtype_map["IS_EXISTS"] = bool
 _base_df = pd.read_csv("pnu.csv", encoding="cp949", dtype=_dtype_map)
 
 
-def gets(texts):
+def gets(texts: List[str]):
     return sorted(set(chain.from_iterable(get(text) for text in texts)))
 
 
@@ -30,11 +31,11 @@ def get(text):
 
 
 def main():
-    locations = [
+    addresses = [
         "서울특별시 종로구",
         "서울특별시 금천구 가산동"
     ]
-    print(gets(locations))
+    print(gets(addresses))
 
 
 if __name__ == "__main__":
